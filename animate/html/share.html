@@ -4,11 +4,16 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style>
+		body{
+			border: 0;
+			margin: 0;
+		}
 		#div1{
-			position:relative;
 			width:200px;
 			height:200px;
 			background: red;
+			position:relative;
+			left:-200px;
 		}
 		#div1 span{
 			width: 20px;
@@ -19,6 +24,47 @@
 			top: 75px;
 		}
 	</style>
+	<script>
+		window.onload = function() {
+			// var oSpan = document.getElementById('share');
+			var oDiv = document.getElementById('div1');
+			oDiv.onmouseover = function(){
+				startMove(10,0);
+			};
+			oDiv.onmouseout =function() {
+				startMove(-10,-200);
+			};
+		};
+		var timer =null	;
+		function startMove(speed,iTatget) {
+			var oDiv = document.getElementById('div1');
+			clearInterval(timer);
+			timer = setInterval(function() {
+				// console.log("dd");
+				if (oDiv.offsetLeft === iTatget) 
+					{
+						clearInterval(timer);
+					} 
+					else {
+						oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+				}
+			},30);
+		}
+		// function startMove1() {
+		// 	var oDiv = document.getElementById('div1');
+		// 	clearInterval(timer);
+		// 	timer = setInterval(function() {
+		// 		// console.log("dd");
+		// 		if (oDiv.offsetLeft == -200) 
+		// 			{
+		// 				clearInterval(timer);
+		// 			} 
+		// 			else {
+		// 				oDiv.style.left = oDiv.offsetLeft - 10 + 'px';
+		// 		}
+		// 	},30);
+		// }
+	</script>
 </head>
 <body>
 	<div id="div1">
