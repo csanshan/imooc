@@ -29,23 +29,30 @@
 			// var oSpan = document.getElementById('share');
 			var oDiv = document.getElementById('div1');
 			oDiv.onmouseover = function(){
-				startMove(10,0);
+				startMove(0);
 			};
 			oDiv.onmouseout =function() {
-				startMove(-10,-200);
+				startMove(-200);
 			};
 		};
-		var timer =null	;
-		function startMove(speed,iTatget) {
+		var timer = null	;
+		function startMove(iTarget) {
 			var oDiv = document.getElementById('div1');
 			clearInterval(timer);
 			timer = setInterval(function() {
 				// console.log("dd");
-				if (oDiv.offsetLeft === iTatget) 
+				var speed = (iTarget - oDiv.offsetLeft)/10;
+				speed = speed > 0?Math.ceil(speed):Math.floor(speed);
+				if (oDiv.offsetLeft === iTarget) 
 					{
 						clearInterval(timer);
 					} 
 					else {
+						// if (oDiv.offsetLeft > iTarget) {
+						// 	speed = -10;
+						// } else {
+						// 	speed = 10;
+						// }
 						oDiv.style.left = oDiv.offsetLeft + speed + 'px';
 				}
 			},30);

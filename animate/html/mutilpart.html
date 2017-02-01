@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mutilpart</title>
+	<style>
+	body,ul{
+		display: block;
+		margin: 0;
+		padding: 0;
+	}
+		ul,li{
+			list-style:none;
+		}
+		ul li{
+			width: 200px;
+			height: 100px;
+			background: yellow;
+			margin-left: 0;
+			padding-left: 0;
+			margin-bottom: 20px;
+		}
+	</style>
+	<script>
+		window.onload = function() {
+			var oLi = document.getElementsByTagName('li');
+			for (var i = oLi.length - 1; i >= 0; i--) {
+				oLi[i].timer = null;
+				oLi[i].onmouseover = function(){
+					startMove(this,400);
+				};
+				oLi[i].onmouseout = function(){
+					startMove(this,200);
+				};
+			}
+		};
+		// var timer = null;
+		function startMove(oBj,iTarget) {
+			var speed = 0;
+			clearInterval(oBj.timer);
+			oBj.timer = setInterval(function(){
+				speed = (iTarget - oBj.offsetWidth)/8;
+				speed = speed > 0?Math.ceil(speed):Math.floor(speed);
+				if (oBj.offsetWidth === iTarget) {
+					clearInterval(oBj.timer);
+				} else {
+						console.log(oBj.offsetWidth);
+						oBj.style.width = oBj.offsetWidth + speed + "px";
+				}
+			},30);		
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>
