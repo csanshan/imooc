@@ -19,6 +19,7 @@
 			margin-left: 0;
 			padding-left: 0;
 			margin-bottom: 20px;
+			border:1px solid #000;
 		}
 	</style>
 	<script>
@@ -38,16 +39,24 @@
 		function startMove(oBj,iTarget) {
 			var speed = 0;
 			clearInterval(oBj.timer);
+			console.log(oBj);
+			console.log(parseInt(getStyle(oBj,'width')));
 			oBj.timer = setInterval(function(){
-				speed = (iTarget - oBj.offsetWidth)/8;
+				speed = (iTarget - parseInt(getStyle(oBj,'width')))/8;
 				speed = speed > 0?Math.ceil(speed):Math.floor(speed);
-				if (oBj.offsetWidth === iTarget) {
+				if (parseInt(getStyle(oBj,'width')) === iTarget) {
 					clearInterval(oBj.timer);
 				} else {
-						console.log(oBj.offsetWidth);
-						oBj.style.width = oBj.offsetWidth + speed + "px";
+						oBj.style.width = parseInt(getStyle(oBj,'width')) + speed + "px";
 				}
 			},30);		
+		}
+		function getStyle(oBj,attr) {
+			if (oBj.currentStyle) {
+				return oBj.currentStyle[attr];
+			} else {
+				return getComputedStyle(oBj,false)[attr];
+			}
 		}
 	</script>
 </head>
