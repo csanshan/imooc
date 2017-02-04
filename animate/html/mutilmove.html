@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Mutilpart</title>
+	<title>Mutilmove</title>
 	<style>
 	body,ul{
 		display: block;
@@ -24,31 +24,35 @@
 	</style>
 	<script>
 		window.onload = function() {
-			var oLi = document.getElementsByTagName('li');
-			for (var i = oLi.length - 1; i >= 0; i--) {
-				oLi[i].timer = null;
-				oLi[i].onmouseover = function(){
-					startMove(this,400);
-				};
-				oLi[i].onmouseout = function(){
-					startMove(this,200);
-				};
-			}
+			var oLi1 = document.getElementById('S1');
+			var oLi2 = document.getElementById('S2');
+			oLi1.onmouseover = function() {
+				startMove(this,'width',400);
+			};
+			oLi1.onmouseout = function(){
+				startMove(this,'width',100);
+			};
+			oLi2.onmouseover = function() {
+				startMove(this,'height',400);
+			};
+			oLi2.onmouseout = function(){
+				startMove(this,'height',100);
+			};
 		};
 		// var timer = null;
-		function startMove(oBj,iTarget) {
+		function startMove(oBj,attr,iTarget) {
 			var speed = 0;
 			clearInterval(oBj.timer);
 			console.log(oBj);
 			// console.log(parseInt(getStyle(oBj,'width')));
 			oBj.timer = setInterval(function(){
-				var icur = parseInt(getStyle(oBj,'width'));
+				var icur = parseInt(getStyle(oBj,attr));
 				speed = (iTarget - icur)/8;
 				speed = speed > 0?Math.ceil(speed):Math.floor(speed);
 				if (icur === iTarget) {
 					clearInterval(oBj.timer);
 				} else {
-						oBj.style.width = icur + speed + "px";
+						oBj.style[attr] = icur + speed + "px";
 				}
 			},30);		
 		}
@@ -63,9 +67,8 @@
 </head>
 <body>
 	<ul>
-		<li></li>
-		<li></li>
-		<li></li>
+		<li id="S1"></li>
+		<li id="S2"></li>
 	</ul>
 </body>
 </html>
