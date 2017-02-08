@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>animate</title>
+	<style>
+		body,div,p{
+			margin: 0;
+			padding:0;
+			font-size: 12px;
+		    font-family: "Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu,Arial;
+		    color: #000000;
+		}
+		#move{
+			width:200px;
+			background-color: #CCC;
+			overflow: hidden;
+		}
+		a{
+			display: inline-block;
+			width: 50px;
+			margin:0 0 0 10px;
+			background-color: #DDD;
+			float: left;
+			position: relative;
+			line-height: 12px;
+			text-decoration: none;
+		}
+		i{
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			top: 20px;
+			opacity: 1;
+			filter: alpha(opacity:30);
+			overflow: hidden;
+		}
+		img{
+			width: 50px;
+			height: 50px;
+		}
+		p{
+			width: 50px;
+			margin: 5px 0 5px 0;
+			text-align: center;
+		}
+	</style>
+	<script src="../js/perfectMove.js"></script>
+	<!-- <script>
+		window.onload = function() {
+			var oTarget = document.getElementsByTagName('a');
+			for (var i = oTarget.length - 1; i >= 0; i--) {
+				oTarget[i].onmouseover = function() {
+					var _this = this.getElementsByTagName('i')[0];
+					startMove(_this,{top:-10,opacity:30},function(){
+						startMove(_this,{top:20,opacity:100});
+					});
+				};
+			}
+		};
+	</script> -->
+</head>
+<body>
+	<div id="move">
+		<a href="#"><i><img src="../images/caipiao.png" alt=""></i><p>彩票</p></a>
+		<a href="#"><i><img src="../images/movie.png" alt=""></i><p>电影</p></a>
+		<a href="#"><i><img src="../images/music.png" alt=""></i><p>音乐</p></a>
+		<a href="#"><i><img src="../images/shenghuo.png" alt=""></i><p>生活</p></a>
+		<a href="#"><i><img src="../images/licai.png" alt=""></i><p>理财</p></a>
+		<a href="#"><i><img src="../images/food.png" alt=""></i><p>食品</p></a>
+	</div>
+</body>
+</html>

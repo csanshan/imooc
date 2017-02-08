@@ -31,7 +31,7 @@ function startMove(oBj,json,fn) {
 				icur = parseInt(getStyle(oBj,attr));
 			}
 			//2计算运动速度
-			var speed = (json[attr] - icur)/8;
+			var speed = (json[attr] - icur)/10;
 			speed = speed > 0?Math.ceil(speed):Math.floor(speed);
 			//3检测停止
 			if(icur != json[attr]){
