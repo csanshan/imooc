@@ -47,20 +47,19 @@
 			text-align: center;
 		}
 	</style>
-	<script src="../js/perfectMove.js"></script>
+	<script src="../public/js/jquery.js"></script>
 	<script>
-		window.onload = function() {
-			var oTarget = document.getElementsByTagName('a');
-			for (var i = oTarget.length - 1; i >= 0; i--) {
-				oTarget[i].onmouseover = function() {
-					var _this = this.getElementsByTagName('i')[0];
-					startMove(_this,{top:-50 ,opacity:30},function(){
-						_this.style.top = 5 + "px";
-						startMove(_this,{top:20,opacity:100});
-					});
-				};
-			}
-		};
+		$(function(){
+			$('#move a').mouseenter(function() {
+				$(this).find('i').animate({
+					top: "-25px",
+					opacity: "0"},
+					300, function() {
+						$(this).css({top:"30px"});
+					$(this).animate({top: "20px", opacity: "1"}, 200);
+				});
+			});
+		});
 	</script>
 </head>
 <body>
