@@ -12,15 +12,15 @@
 		    color: #000000;
 		}
 		#move{
-			width:200px;
+			width:350px;
 			background-color: #CCC;
 			overflow: hidden;
 		}
 		a{
 			display: inline-block;
-			width: 50px;
-			height: 72px;
-			margin:0 0 0 10px;
+			width: 100px;
+			height: 100px;
+			margin:10px 0 10px 10px;
 			background-color: #DDD;
 			float: left;
 			position: relative;
@@ -32,7 +32,8 @@
 			width: 50px;
 			height: 50px;
 			position: absolute;
-			top: 5px;
+			top: 15px;
+			margin-left: 25px;
 			opacity: 1;
 			filter: alpha(opacity:30);
 			overflow: hidden;
@@ -43,7 +44,7 @@
 		}
 		p{
 			width: 50px;
-			margin: 55px 0 5px 0;
+			margin: 70px 0 0 25px;
 			text-align: center;
 		}
 	</style>
@@ -54,14 +55,9 @@
 			for (var i = oTarget.length - 1; i >= 0; i--) {
 				oTarget[i].onmouseover = function() {
 					var _this = this.getElementsByTagName('i')[0];
-<<<<<<< HEAD
-					startMove(_this,{top:-50 ,opacity:30},function(){
-						_this.style.top = 5 + "px";
-						startMove(_this,{top:20,opacity:100});
-=======
-					startMove(_this,{top:-10,opacity:30},function(){
-						startMove(_this,{top:20,opacity:100},function(){startMove(_this,{top:10,opacity:30})});
->>>>>>> master
+					startMove(_this,{top:-20 ,opacity:0},function(){
+						_this.style.top = 75 + "px";
+						startMove(_this,{top:15,opacity:100});
 					});
 				};
 			}

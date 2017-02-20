@@ -19,10 +19,10 @@ function getStyle(oBj,attr) {
  * @param  {Function} fn   [description]
  * @return {string}        the attribute of target
  */
-var flag = true;
 function startMove(oBj,json,fn) {
 	clearInterval(oBj.timer);
 	oBj.timer = setInterval(function() {
+		var flag = true;
 		for(var attr in json){
 			var icur = 0;
 			if (attr === "opacity") {
@@ -44,12 +44,12 @@ function startMove(oBj,json,fn) {
 			}else{
 				oBj.style[attr] = icur + speed + 'px';
 			}
-			if(flag){
-				clearInterval(oBj.timer);
-				if(fn){
-					fn();
-				}
+		}
+		if(flag){
+			clearInterval(oBj.timer);
+			if(fn){
+				fn();
 			}
 		}
-	},30);
+	},10);
 }
