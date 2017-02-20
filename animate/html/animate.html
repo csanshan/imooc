@@ -54,9 +54,14 @@
 			for (var i = oTarget.length - 1; i >= 0; i--) {
 				oTarget[i].onmouseover = function() {
 					var _this = this.getElementsByTagName('i')[0];
+<<<<<<< HEAD
 					startMove(_this,{top:-50 ,opacity:30},function(){
 						_this.style.top = 5 + "px";
 						startMove(_this,{top:20,opacity:100});
+=======
+					startMove(_this,{top:-10,opacity:30},function(){
+						startMove(_this,{top:20,opacity:100},function(){startMove(_this,{top:10,opacity:30})});
+>>>>>>> master
 					});
 				};
 			}
