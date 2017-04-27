@@ -12,9 +12,7 @@
 		    color: #000000;
 		}
 		#move{
-			width:380px;
-			padding: 30px 0 40px 0;
-
+			width:350px;
 			background-color: #CCC;
 			overflow: hidden;
 		}
@@ -22,8 +20,7 @@
 			display: inline-block;
 			width: 100px;
 			height: 100px;
-			margin:10px 0 0 20px;
-
+			margin:10px 0 10px 10px;
 			background-color: #DDD;
 			float: left;
 			position: relative;
@@ -34,10 +31,9 @@
 			display: inline-block;
 			width: 50px;
 			height: 50px;
-			margin: 20px 0 0 20px;
 			position: absolute;
-			/*top: 5px;*/
-
+			top: 15px;
+			margin-left: 25px;
 			opacity: 1;
 			filter: alpha(opacity:30);
 			overflow: hidden;
@@ -48,28 +44,23 @@
 		}
 		p{
 			width: 50px;
-			margin: 80px 0 0 20px;
-
+			margin: 70px 0 0 25px;
 			text-align: center;
 		}
 	</style>
-	<script src="../js/perfectMove.js"></script>
+	<script src="../public/js/jquery.js"></script>
 	<script>
-		window.onload = function() {
-			var oTarget = document.getElementsByTagName('a');
-			for (var i = oTarget.length - 1; i >= 0; i--) {
-				oTarget[i].onmouseover = function() {
-					var _this = this.getElementsByTagName('i')[0];
-// <<<<<<< HEAD
-					startMove(_this,{top:-40,opacity:0},function(){
-						_this.style.top = 50 + "px";
-						startMove(_this,{top:5,opacity:100});
-
-						startMove(_this,{top:15,opacity:100});
-					});
-				};
-			}
-		};
+		$(function(){
+			$('#move a').mouseenter(function() {
+				$(this).find('i').animate({
+					top: "-25px",
+					opacity: "0"},
+					300, function() {
+						$(this).css({top:"30px"});
+					$(this).animate({top: "20px", opacity: "1"}, 200);
+				});
+			});
+		});
 	</script>
 </head>
 <body>

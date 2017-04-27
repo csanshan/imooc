@@ -52,5 +52,5 @@ function startMove(oBj,json,fn) {
 				fn();
 			}
 		}
-	},20);
+	},10);
 }
